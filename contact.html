@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('cc1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: flex-start; /* Centering the container on the page */
+            align-items: flex-start;
+            width: 60%;
+            height: 60vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .contact-box {
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+            padding: 40px;
+            margin-left:30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            color: #fff;
+        }
+
+        .contact-box h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+        width:450px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+        }
+
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+
+    </style>
+
+    <script>
+        function sendContactForm() {
+            var form = document.getElementById("contactForm");
+            var formData = new FormData(form);
+
+            // Add hidden fields to send email notification to the admin
+            formData.append('access_key', '68a77da8-953b-4210-b9d1-d5da9d06fc47'); // Your Web3Forms Access Key
+            formData.append('from_name', 'Contact Notifications'); // Display as "Contact Notifications"
+            formData.append('from_email', 'contact@example.com'); // Generic from email (you can change this)
+
+            formData.append('subject', 'New Contact Us Form Submission'); // Subject line
+
+            // Send the form data using Fetch API
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert("Message sent! Thank you for your time");
+                    form.reset(); // Reset the form after successful submission
+                } else {
+                    alert("Error: " + result.message);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("There was an error processing your request.");
+            });
+        }
+    </script>
+</head>    
+<body>
+
+    <div class="contact-container">
+        <div class="contact-box">
+            <h2>Contact Us</h2>
+
+            <div class="contact-info">
+                <h3>Our Information</h3>
+                <ul>
+                    <li><strong>Address:</strong> 4671 Sugar Camp Road, Owatonna, Minnesota, 55060</li>
+                    <li><strong>Phone:</strong> 507-475-6094</li>
+                    <li><strong>Email:</strong> info@mywebsite.com</li>
+                </ul>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" onclick="sendContactForm()">Send</button> 
+                           <button onclick="history.back()" class="send-button">Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

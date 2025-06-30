@@ -1,0 +1,128 @@
+/* General reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2), 
+        rgba(255, 255, 255, 0.2)
+    ), url('4.png'); /* Adjust with your image filename */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    min-height: 100vh;
+    padding-left: 50px; /* Optional spacing from the left edge */
+}
+
+/* Signup form container */
+.signup {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    padding: 25px 35px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Added slight transparency for better contrast */
+}
+
+/* Form heading */
+.signup h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color:#00FFFF; /* Neutral dark color for heading */
+    font-weight: bold;
+}
+
+.signup h4 {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: black; /* Softer shade for subtitle */
+}
+
+/* Form labels */
+.signup label {
+    font-size: 14px;
+    color:	#00FFFF;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input fields */
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Highlight input on focus */
+.signup input[type="text"]:focus,
+.signup input[type="email"]:focus,
+.signup input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Submit button */
+.signup input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* Bright blue color */
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+/* Submit button hover effect */
+.signup input[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Terms and condition text */
+.signup p {
+    font-size: 12px;
+    color: #007bff ;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* Links styling */
+.signup a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        justify-content: center; /* Center the signup box on smaller screens */
+        padding-left: 0;
+    }
+
+    .signup {
+        padding: 20px;
+        width: 100%;
+    }
+}
+

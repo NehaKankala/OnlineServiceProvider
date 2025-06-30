@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('4.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            margin-left:60px;
+            align-items: center;
+        }
+
+        .registration-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: #fff;
+            text-align: center;
+        }
+
+        .registration-container h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .registration-container h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .registration-container form {
+            display: none;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .registration-container form.active {
+            display: flex;
+        }
+
+        .registration-container label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .registration-container input[type="text"],
+        .registration-container input[type="email"],
+        .registration-container input[type="password"],
+        .registration-container select {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .registration-container input[type="submit"] {
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .registration-container input[type="submit"]:hover {
+            background-color: #004999;
+        }
+
+        .registration-container p {
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .registration-container p a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004999;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-container">
+        <h1>Register</h1>
+        <label for="registration-type">Select Registration Type:</label>
+        <select id="registration-type" onchange="toggleForm()">
+            <option value="user">User</option>
+            <option value="provider">Provider</option>
+        </select>
+        
+        <form id="user-form" class="active" name="userForm" action="ins.jsp" method="POST">
+            <h4>User Registration</h4>
+            <label>First Name</label>
+            <input type="text" name="fname" required>
+            <label>Contact Address</label>
+            <input type="text" name="cnum" required>
+            <label>Address</label>
+            <input type="text" name="address" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <label>Password</label>
+            <input type="password" name="pass" required>
+            <input type="submit" value="Submit">
+            <p>By clicking the sign-up button, you agree to our<br> Terms and Conditions and <a href="login.html">Already have an account?</a></p>
+        </form>
+        
+        <form id="provider-form" name="providerForm" action="serins.jsp" method="POST">
+            <h4>Service Provider Registration</h4>
+            <label>First Name</label>
+            <input type="text" name="fname" required>
+            <label>Contact Address</label>
+            <input type="text" name="cnum" required>
+            <label>Address</label>
+            <input type="text" name="address" required>
+            <label>Email</label>
+            <input type="email" name="email" required>
+            <label>Password</label>
+            <input type="password" name="pass" required>
+            <label>Service Type</label>
+            <input type="text" name="service" required>
+            <input type="submit" value="Submit">
+            <p>By clicking the sign-up button, you agree to our<br> Terms and Conditions and <a href="login.html">Already have an account?</a></p>
+        </form>
+        <button onclick="history.back()">Back</button>
+    </div>
+    <script>
+        function toggleForm() {
+            const registrationType = document.getElementById('registration-type').value;
+            const userForm = document.getElementById('user-form');
+            const providerForm = document.getElementById('provider-form');
+
+            if (registrationType === 'user') {
+                userForm.classList.add('active');
+                providerForm.classList.remove('active');
+            } else {
+                providerForm.classList.add('active');
+                userForm.classList.remove('active');
+            }
+        }
+
+        // Initialize the default form visibility
+        toggleForm();
+    </script>
+</body>
+</html>
+

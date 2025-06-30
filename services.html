@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: url('woman.jpeg') no-repeat center center fixed;
+    background-size: contain;
+    background-size: cover;
+    background-size: 38%;
+    background-position: right;
+}
+
+
+        header {
+            background-color: black;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        header ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        header ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .services-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            left: -80px;
+        }
+
+        .home-image {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: url('osp1.jpeg') no-repeat center center / cover;
+            border-radius: 50%;
+            border: 3px solid black;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-item {
+            position: absolute;
+            width: 105px;
+            height: 105px;
+            background: #f4f4f4;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: scale(1.1);
+        }
+
+        .service-item img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+        }
+
+        .service-item a {
+            text-decoration: none;
+            color: black;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        /* Circular Positioning */
+
+        .service-item:nth-child(2) { top: 18%; left: 50%; transform: translate(-50%, -50%); }
+        .service-item:nth-child(3) { top: 35%; left: 80%; transform: translate(-50%, -50%); }
+        .service-item:nth-child(4) { top: 65%; left: 80%; transform: translate(-50%, -50%); }
+        .service-item:nth-child(5) { top: 83%; left: 50%; transform: translate(-50%, -50%); }
+        .service-item:nth-child(6) { top: 67%; left: 20%; transform: translate(-50%, -50%); }
+        .service-item:nth-child(7) { top: 35%; left: 20%; transform: translate(-50%, -50%); }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        button {
+        
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-left:800px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004999;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Align buttons horizontally */
+            gap: 15px; /* Add spacing between buttons */
+            margin-top: 10px; /* Space above the button row */
+        }
+        .button-container a {
+            background-color: #0056b3;
+            color: white;
+            font-size: 16px; /* Slightly smaller font size for better fit */
+            padding: 10px 15px; /* Adjusted padding for better proportions */
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            display: inline-block;
+            text-align: center;
+        }
+        .button-container a:hover {
+            background-color: #004494;
+            transform: scale(1.05); /* Slight scale effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="orders.jsp">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Circular Services -->
+    <section class="services-container">
+        <!-- Home Center Image -->
+        <div class="home-image"></div>
+
+        <!-- Service Items in Circular Layout -->
+        <div class="service-item">
+            <a href="providers.jsp?service=plumbing">
+                <img src="plumbing.jpeg" alt="Plumbing">
+                <br>Plumbing
+            </a>
+        </div>
+        <div class="service-item">
+            <a href="ecprovider.jsp?service=electrician">
+                <img src="electrician.jpeg"Electrician">
+                <br>Electrician
+            </a>
+        </div>
+        <div class="service-item">
+            <a href="ccprovider.jsp?service=carpentry">
+                <img src="carpenter.jpeg" alt="Carpentry">
+                <br>Carpentry
+            </a>
+        </div>
+        <div class="service-item">
+            <a href="drprovider.jsp?service=driving">
+                <img src="driving.jpeg" alt="Driving">
+                <br>Driving
+            </a>
+        </div>
+        <div class="service-item">
+            <a href="pprovider.jsp?service=tutor">
+                <img src="tutor.jpeg" alt="Tutor">
+                <br>Tutor
+            </a>
+        </div>
+        <div class="service-item">
+            <a href="bprovider.jsp?service=babysitter">
+                <img src="babysitter.jpeg" alt="Babysitter">
+                <br>Baby-Sitter
+            </a>
+        </div>
+        
+    </section>
+<div class="button-container"><a href="services.jsp">back</a></div>
+    <footer>
+        <p>&copy; 2024 Online Service Provider. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

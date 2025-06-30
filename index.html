@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Service Provider</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+.menu {
+    background-color: #000;
+    padding: 1px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.menu li {
+    list-style: none; /* Ensures no bullets for list items */
+    display: inline-block; /* Aligns menu items horizontally */
+    margin: 0 15px;
+    padding: 10px 20px;
+    background-color: #000;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.menu a {
+    text-decoration: none; /* Removes underline */
+    color: white; /* Ensures text color is white */
+    display: inline-block; /* Makes the anchor take the space of its parent */
+}
+
+.menu a:hover {
+    background-color: #444;
+}
+ h1
+ {
+ color:black;
+ }
+
+        .voice-button img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border-radius: 50%;
+          
+        }
+
+        .voice-button.active img {
+            background-color: #e53935;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .search-bar-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 180px;
+            margin-left: 40px;
+        }
+
+        .search-bar {
+            width: 40%;
+            padding: 10px;
+            font-size: 18px;
+        }
+body {
+    text-align: center;
+    padding: 50px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.1)
+    ), url('homepage2.jpeg'); /* Light 10% overlay over the background image */
+    background-size: cover; /* Ensures image covers the full screen */
+    background-attachment: fixed;
+    background-position: center 50px;
+    background-repeat: no-repeat;
+    color: #fff; /* Text remains white for visibility */
+}
+
+        .btn {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            justify-content: flex-start;
+            width: 11%;
+            margin-left: 200px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for the ad container */
+        .ad-container {
+            margin-top: 20px;
+            text-align: center;
+            color:black;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 40px;
+        }
+
+        .ad-container video {
+            margin-top: 10 px;
+            width: 320px;
+            height: 180px;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1px 0;
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+            <div class="menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sign.html">Register</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                  <li><a href="logout.jsp">Logout</a></li>
+            </ul>
+       </div>
+    </header>
+
+    <!-- Hero Section with Search Bar -->
+       
+        <div class="search-bar-container">
+            <input type="text" id="search-bar" class="search-bar" placeholder="Search for services...">
+            <div id="voice-btn" class="voice-button" onclick="toggleRecognition()">
+                <img src="mic1.jpeg" alt="Voice Assistant">
+            </div>
+        </div>
+        <a href="login.html" class="btn">Hire a Service Provider</a>
+
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <h2>Advertisement</h2>
+            <!-- Embedded video ad -->
+            <video controls autoplay loop muted>
+                <br>
+                <source src="WhatsApp Video 2024-11-05 at 8.06.13 PM.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+ 
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Online Service Provider. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript code for voice recognition and service search functionality
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRecognition) {
+            alert("Your browser does not support voice recognition. Please use Google Chrome.");
+        }
+
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US'; 
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        let recognizing = false;
+
+        const searchBar = document.getElementById('search-bar');
+        const voiceBtn = document.getElementById('voice-btn');
+
+        function toggleRecognition() {
+            if (recognizing) {
+                recognition.stop();
+                recognizing = false;
+                voiceBtn.classList.remove('active');
+            } else {
+                recognition.start();
+                recognizing = true;
+                voiceBtn.classList.add('active');
+            }
+        }
+
+        recognition.onresult = (event) => {
+            const speechToText = event.results[0][0].transcript;
+            searchBar.value = speechToText;
+            searchResults(speechToText);
+        };
+
+        recognition.onend = () => {
+            recognizing = false;
+            voiceBtn.classList.remove('active');
+        };
+
+        recognition.onerror = (event) => {
+            console.error("Error occurred in recognition: ", event.error);
+            recognizing = false;
+            voiceBtn.classList.remove('active');
+        };
+
+        function searchResults(query) {
+            if (query.trim() === "") return;
+
+            const services = {
+                "plumbing": "providers.jsp?service=plumbing",
+                "electrician": "ecprovider.jsp?service=electrician",
+                "carpentry": "ccprovider.jsp?service=carpentry",
+                "driving": "drprovider.jsp?service=driving",
+                "tutor": "pprovider.jsp?service=tutor",
+                "baby-sitter": "bprovider.jsp?service=baby-sitter", 
+            };
+
+            const relatedKeywords = {
+                "plumbing": ["plumber", "plumbing", "pipes", "leak", "drain", "clog", "water", "tap", "repair"],
+                "electrician": ["electrician", "electrical", "electric", "wiring", "socket", "switch", "fuse", "lighting", "power", "circuit","tv","fridge","AC","fan","cooler","washing machine","light"],
+                "carpentry": ["carpenter", "carpentry", "wood", "furniture", "cabinet", "joinery", "table", "chair","sofa"],
+                "driving": ["drive", "driver", "driving", "vehicle", "car", "taxi", "transport","bike","bus","traveller","rapido","ola","auto","scooty","cycle"],
+                "baby-sitter":["baby","caretaker","child care","kids","kid","kids care","child"],
+                "tutor":["teacher","teach","learn","sir","faculty","tution","student","homework"],
+            };
+
+            const foundService = Object.keys(services).find(service => query.toLowerCase().includes(service));
+            const relatedMatch = Object.keys(relatedKeywords).find(service => {
+                return relatedKeywords[service].some(keyword => query.toLowerCase().includes(keyword));
+            });
+
+            if (foundService) {
+                window.location.href = services[foundService];
+            } else if (relatedMatch) {
+                window.location.href = services[relatedMatch];
+            } else {
+                alert("No matching service found for: " + query);
+            }
+        }
+
+        searchBar.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                searchResults(searchBar.value);
+            }
+        });
+    </script>
+  
+</body>
+</html>

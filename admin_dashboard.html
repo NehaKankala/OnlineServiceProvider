@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+        
+        <!-- Manage Services -->
+        <h3>Manage Services</h3>
+        <form action="add_service.jsp" method="POST">
+            <label for="service-name">Add New Service:</label>
+            <input type="text" id="service-name" name="service_name" required>
+            <button type="submit">Add Service</button>
+        </form>
+
+        <h3>Existing Services</h3>
+        <ul>
+            <li>Plumbing <a href="remove_service.jsp?service_id=1">Remove</a></li>
+            <!-- Repeat for each service -->
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Online Service Provider. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
