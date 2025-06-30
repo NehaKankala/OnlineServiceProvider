@@ -20,21 +20,6 @@ Service providers can log in to accept or reject requests, and admins can manage
 
 ---
 
-## 📁 Project Structure
-
-OnlineServiceProvider/
-├── css/ # All CSS styling files
-├── images/ # Logos, banners, icons, etc.
-├── codes/ # HTML, JS, JSP, JDBC files
-├── README.md # Project documentation
-
-
-- `css/`: Contains stylesheets (e.g., `style.css`) for layout and appearance.
-- `images/`: Includes site graphics like logos and icons.
-- `codes/`: Contains the full source code, including frontend and backend logic.
-
----
-
 ## 💡 Key Features
 
 - 👤 User Registration and Login System
